@@ -1,0 +1,19 @@
+apt-get update
+apt-get install aptitude
+aptitude update
+
+#aptitude install build-essential
+apt-get install unzip
+apt-get -t experimental install hfsprogs hfsutils hfsplus
+
+echo "deb http://ftp.us.debian.org/debian squeeze main contrib non-free" >> /etc/apt/sources.list
+aptitude update
+aptitude install firmware-ralink wireless-tools
+aptitude -y install wpasupplicant
+
+echo "auto wlan0" >> /etc/network/interfaces
+echo "iface wlan0 inet dhcp" >> /etc/network/interfaces
+echo "    wpa-ssid mynetworkname" >> /etc/network/interfaces
+echo "    wpa-psk mysecretpassphrase" >> /etc/network/interfaces
+
+ifup wlan0
